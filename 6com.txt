@@ -1,0 +1,11 @@
+cd FlaskComposeProject
+
+docker compose build
+docker compose up -d
+docker ps
+
+http://localhost:5000(open browser)
+docker compose logs web
+docker compose logs db
+
+docker compose down
