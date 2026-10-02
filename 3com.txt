@@ -1,0 +1,14 @@
+cd Desktop
+cd Git_Practical
+
+git init
+git status
+git add hello.py
+git config --global user.name ""
+git config --global user.email ""
+git commit -m "hell"
+git log
+git add hello.py
+git commit -m "Updated hello.py"
+git status
+
