@@ -1,0 +1,19 @@
+1. GET All Tasks
+curl http://127.0.0.1:5000/todos
+Task: Retrieves all tasks.
+
+2. POST (Create)
+curl -X POST http://127.0.0.1:5000/todos -H "Content-Type: application/json" -d "{\"title\":\"Complete REST API Assignment\"}"
+Task: Creates a new task.
+
+3. PUT (Update)
+curl -X PUT http://127.0.0.1:5000/todos/1 -H "Content-Type: application/json" -d "{\"title\":\"Learn Flask API\",\"completed\":true}"
+Task: Updates task with ID 1.
+
+4. DELETE
+curl -X DELETE http://127.0.0.1:5000/todos/1
+Task: Deletes task with ID 1.
+
+5. Verify Deletion
+curl http://127.0.0.1:5000/todos
+Task: Retrieves all tasks to verify that task ID 1 was deleted.

@@ -1,0 +1,25 @@
+Command
+1 cd Desktop
+2 mkdir Git_Practical
+
+3 cd Git_Practical
+
+4 code .
+
+5 git init
+
+6 git status
+
+7 git add .
+
+8 git commit -m "Initial Python Project"
+
+9 git log
+
+10 git add hello.py
+
+11 git commit -m "Updated hello.py"
+
+12 git status
+
+
