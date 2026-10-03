@@ -1,0 +1,90 @@
+java -version
+git --version
+install Jenkins
+http://localhost:8080
+C:\ProgramData\Jenkins\.jenkins\secrets\initialAdminPassword
+install suggested plugins
+jenkins_demo
+
+1)app.py
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "Hello from Flask CI/CD!"
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
+
+2)requirements.txt
+Flask
+pytest
+
+3)test_app.py
+from app import app
+
+def test_home():
+    client = app.test_client()
+    response = client.get("/")
+
+    assert response.status_code == 200
+    assert response.data == b"Hello from Flask CI/CD!"
+
+python -m venv venv
+pip install -r requirements.txt
+pytest
+python app.py(http://localhost:5000)
+flask-jenkins-demo
+
+
+git init
+git add .
+git commit -m "Initial Flask application"
+git branch -M main
+git remote add origin YOUR_GITHUB_REPOSITORY_URL
+git push -u origin main
+After pushing, your GitHub repository should contain:
+app.py
+requirements.txt
+test_app.py
+
+Jenkins Dashboard > New Item > Enter: Flask-CI-CD > Select: Pipeline
+Pipeline script
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                    url: 'YOUR_GITHUB_REPOSITORY_URL'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                bat 'python -m pip install -r requirements.txt'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                bat 'pytest'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                bat 'echo Application deployed successfully'
+            }
+        }
+    }
+}
+
+Open your Jenkins job: Flask-CI-CD > Click: Build Now
+You will see: Build #1
+Click the build number and select: Console Output
+
