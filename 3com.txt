@@ -2,6 +2,7 @@ cd Desktop
 cd Git_Practical
 
 git init
+.git
 git status
 git add hello.py
 git config --global user.name ""
