@@ -1,0 +1,61 @@
+python --version
+node --version
+npm --version
+
+"C:\Program Files\PostgreSQL\18\bin\psql.exe" --version
+netstat -ano | findstr :5433
+
+3)Open pgAdmin. 
+Servers → PostgreSQL 18 → Databases > Right-click Databases → Create → Database
+Use: Database:studentdb2
+Then click Save.
+
+4)studentdb2 → Query Tool
+CREATE TABLE students (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    course VARCHAR(100) NOT NULL
+);
+Then click the Execute ▶ button.(You should get:Query returned successfully)
+
+Then insert some sample data:
+INSERT INTO students (name, email, course)
+VALUES
+('Rahul', 'rahul@gmail.com', 'BCA'),
+('Priya', 'priya@gmail.com', 'BSc CS'),
+('Amit', 'amit@gmail.com', 'BCA');
+
+cd backend
+python -m venv venv(activate)
+python -m pip install flask flask-cors "psycopg[binary]"
+python -c "import flask, psycopg; print('Flask and PostgreSQL connector OK')"
+
+app.py
+ 
+step7: run app.py(start the backend)http://127.0.0.1:5000 and http://127.0.0.1:5000/students
+
+inside main folder
+npm create vite@latest frontend -- --template react
+If it asks:
+Need to install the following packages...
+Ok to proceed? (y)
+Type:
+y
+Wait until it finishes
+
+install dependencies
+cd frontend
+Then:
+npm install
+Then:
+npm install axios
+
+app.jsx
+app.css 
+
+start frontend
+three-tier-student-app\frontend
+npm run dev
+
+
